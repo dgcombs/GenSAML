@@ -26,7 +26,7 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Base64;
 
 public class GenSAML {
-    private static htmlFramework_start = 
+
     public static void main(String[] args) throws Exception {
         // create Options object for command line
         Options options = new Options();
@@ -53,7 +53,7 @@ public class GenSAML {
             System.exit(1);
         }
         String encryptionKeyFileName = cmd.getOptionValue("k");
-        if encryptionKeyFileName == null) {
+        if (encryptionKeyFileName == null) {
             System.out.println("Encryption Key File Required");
             System.exit(1);
         }
@@ -72,7 +72,7 @@ public class GenSAML {
         FileReader keyf = new FileReader(encryptionKeyFileName); 
         BufferedReader br = new BufferedReader(keyf); 
         String encryptionKey; 
-        while(encryptionKey = br.readLine()) != null) { 
+        while(encryptionKey = br.readLine() != null) { 
             System.out.print(".");
             System.out.println();
         }
@@ -82,7 +82,7 @@ public class GenSAML {
         FileReader samlf = new FileReader(samlFileName);
         BufferedReader cr = new BufferedReader(samlf);
         String plainSAML;
-        while (plainSAML = br.readLine()) != null) {
+        while (plainSAML = br.readLine() != null) {
             System.out.print(".");
             System.out.println();
         }
@@ -90,12 +90,12 @@ public class GenSAML {
         
         // Encrypt the SAML
         String encryptedSAML=null;
-        Key secretKey = new SecretKeySpec(new Base64().decode(encryptionKey,"DESede");
+        Key secretKey = new SecretKeySpec(new Base64().decode(encryptionKey,"DESede"));
         ivParameterSpec iv = new IvParameterSpec(new byte[8]);
         Cipher cipher = Cipher(getInstance("DESede/CBC/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv);
         byte[] cipherSAML = cipher.doFinal(plainSAML.getBytes("utf-8");
-        encryptedSAML = new Base64.encode(cipherSAML);
+        encryptedSAML = new Base64().encode(cipherSAML);
         
         // Build the HTML File
         String htmlString="<!DOCTYPE HTML>";
@@ -104,7 +104,7 @@ public class GenSAML {
         htmlString += "<title>SAML Test Assertion</title>";
         htmlString += "</head>";
         htmlString += "<body onload=\"submit_form();\">\n<form name=\"myform\" action=\"";
-        htmlString += url + "\" method=\POST\"";
+        htmlString += url + "\" method=POST\"";
         htmlString += "<input> type=\"hidden\" name=\"SAMLResponse\" value=\"";
         htmlString += encryptedSAML + "\">";
         htmlString += "</form>";
