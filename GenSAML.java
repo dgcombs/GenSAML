@@ -74,12 +74,13 @@ public class GenSAML {
         FileReader keyf = new FileReader(encryptionKeyFileName); 
         BufferedReader br = new BufferedReader(keyf); 
         String encryptionKey; 
-        while((encryptionKey = br.readLine()) != null) { 
+        while((String nextLine = br.readLine()) != null) { 
             System.out.print(".");
-            System.out.println("Secret Key:: " + encryptionKey);
+            System.out.println("Secret Key:: " + nextLine);
+            encryptionKey.append(nextLine);
         }
         // encryptionKey = encryptionKey.trim();
-        encryptionKey = "JpKJLO2qaMkgEs4VFYEX+eYnn0J6LXXI";
+        //encryptionKey = "JpKJLO2qaMkgEs4VFYEX+eYnn0J6LXXI";
         keyf.close();
         
         // Open SAML file and read into String variable
