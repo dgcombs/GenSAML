@@ -78,7 +78,7 @@ public class GenSAML {
             System.out.print(".");
             System.out.println("Secret Key:: " + encryptionKey);
         }
-        encryptionKey = encryptionKey.replace("\r","").replace("\n","");
+        encryptionKey = encryptionKey.replace("\\r","").replace("\\n","");
         keyf.close();
         
         // Open SAML file and read into String variable
