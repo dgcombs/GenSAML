@@ -74,7 +74,7 @@ public class GenSAML {
         FileReader keyf = new FileReader(encryptionKeyFileName); 
         BufferedReader br = new BufferedReader(keyf); 
         String encryptionKey; 
-        while(encryptionKey = br.readLine() != null) { 
+        while((encryptionKey = br.readLine()) != null) { 
             System.out.print(".");
             System.out.println();
         }
@@ -84,7 +84,7 @@ public class GenSAML {
         FileReader samlf = new FileReader(samlFileName);
         BufferedReader cr = new BufferedReader(samlf);
         String plainSAML;
-        while (plainSAML = br.readLine() != null) {
+        while ((plainSAML = br.readLine()) != null) {
             System.out.print(".");
             System.out.println();
         }
@@ -92,7 +92,7 @@ public class GenSAML {
         
         // Encrypt the SAML
         String encryptedSAML=null;
-        Key secretKey = new SecretKeySpec(new Base64().decode(encryptionKey,"DESede"));
+        Key secretKey = new SecretKeySpec(new Base64().decode(encryptionKey),"DESede");
         ivParameterSpec iv = new IvParameterSpec(new byte[8]);
         Cipher cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv);
