@@ -97,7 +97,7 @@ public class GenSAML {
         Cipher cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv);
         byte[] cipherSAML = cipher.doFinal(plainSAML.getBytes("utf-8"));
-        encryptedSAML = new Base64().encode(cipherSAML);
+        cipherSAML = new Base64().encode(cipherSAML);
         
         // Build the HTML File
         String htmlString="<!DOCTYPE HTML>";
