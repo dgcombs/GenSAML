@@ -73,7 +73,7 @@ public class GenSAML {
         // Open Key file and read in key
         FileReader keyf = new FileReader(encryptionKeyFileName); 
         BufferedReader br = new BufferedReader(keyf); 
-        String encryptionKey;
+        String encryptionKey = "";
         String nextLine;
         while((nextLine = br.readLine()) != null) { 
             System.out.print(".");
