@@ -26,7 +26,7 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Base64;
 
 public class GenSAML {
-
+    private static htmlFramework_start = 
     public static void main(String[] args) throws Exception {
         // create Options object for command line
         Options options = new Options();
@@ -34,23 +34,86 @@ public class GenSAML {
         // add h option
         options.addOption("h", false, "You want usage? Don't be ridiculous!");
         options.addOption("u",true,"Target URL");
+        options.addOption("k",true,"Base64 Encoded Key File Name");
+        //options.addOption("e",true,"Environment - dev, test, prod");
+        options.addOption("s",true,"SAML File Name");
+        //options.addOption("t",true,"TCID");
         
         CommandLineParser parser = new PosixParser();
         CommandLine cmd = parser.parse( options, args);
         if(cmd.hasOption("h")) {
         // Tell Dan Howdy
             System.out.println("Howdy, Dan!");
-        }
-        else {
-        // print the date
-            System.out.println("No commandline");
+            System.exit(0);
         }
         // Get the URL Option
         String targetURL = cmd.getOptionValue("u");
         if (targetURL == null) {
-            System.out.println("Target URL Needed");
-        } else {
-            System.out.println(targetURL);
+            System.out.println("Target URL Required");
+            System.exit(1);
         }
+        String encryptionKeyFileName = cmd.getOptionValue("k");
+        if encryptionKeyFileName == null) {
+            System.out.println("Encryption Key File Required");
+            System.exit(1);
+        }
+        String samlFileName = cmd.getOptionValue("s");
+        if (samlFileName == null) {
+            System.out.println("SAML File Required");
+            System.exit(1);
+        }
+        String tcidValue = cmd.getOptionValue("t");
+        if (tcidValue == null) {
+            System.out.println("TCID Value Required");
+            System.exit(1);
+        }
+        
+        // Open Key file and read in key
+        FileReader keyf = new FileReader(encryptionKeyFileName); 
+        BufferedReader br = new BufferedReader(keyf); 
+        String encryptionKey; 
+        while(encryptionKey = br.readLine()) != null) { 
+            System.out.print(".");
+            System.out.println();
+        }
+        keyf.close();
+        
+        // Open SAML file and read into String variable
+        FileReader samlf = new FileReader(samlFileName);
+        BufferedReader cr = new BufferedReader(samlf);
+        String plainSAML;
+        while (plainSAML = br.readLine()) != null) {
+            System.out.print(".");
+            System.out.println();
+        }
+        samlf.close();
+        
+        // Encrypt the SAML
+        String encryptedSAML=null;
+        Key secretKey = new SecretKeySpec(new Base64().decode(encryptionKey,"DESede");
+        ivParameterSpec iv = new IvParameterSpec(new byte[8]);
+        Cipher cipher = Cipher(getInstance("DESede/CBC/PKCS5Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv);
+        byte[] cipherSAML = cipher.doFinal(plainSAML.getBytes("utf-8");
+        encryptedSAML = new Base64.encode(cipherSAML);
+        
+        // Build the HTML File
+        String htmlString="<!DOCTYPE HTML>";
+        htmlString += "<html>";
+        htmlString += "<head>";
+        htmlString += "<title>SAML Test Assertion</title>";
+        htmlString += "</head>";
+        htmlString += "<body onload=\"submit_form();\">\n<form name=\"myform\" action=\"";
+        htmlString += url + "\" method=\POST\"";
+        htmlString += "<input> type=\"hidden\" name=\"SAMLResponse\" value=\"";
+        htmlString += encryptedSAML + "\">";
+        htmlString += "</form>";
+        htmlString += "<script language=\"javascript\">";
+		htmlString += "function submit_form() {";
+		htmlString += "document.myform.submit()";
+		htmlString += "}";
+	    htmlString += "</script>";
+        htmlString += "</body>";
+        htmlString += "</html>";
     }
 }
