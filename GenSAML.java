@@ -107,7 +107,7 @@ public class GenSAML {
         cipherSAML = new Base64().encode(cipherSAML);
         
         // Build the HTML File
-        String htmlString="<!DOCTYPE HTML>";
+        String htmlString="<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n";
         htmlString += "<html>\n";
         htmlString += "<head>\n";
         htmlString += "<title>SAML Test Assertion</title>\n";
