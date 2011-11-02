@@ -108,22 +108,22 @@ public class GenSAML {
         
         // Build the HTML File
         String htmlString="<!DOCTYPE HTML>";
-        htmlString += "<html>";
-        htmlString += "<head>";
-        htmlString += "<title>SAML Test Assertion</title>";
-        htmlString += "</head>";
+        htmlString += "<html>\n";
+        htmlString += "<head>\n";
+        htmlString += "<title>SAML Test Assertion</title>\n";
+        htmlString += "</head>\n";
         htmlString += "<body onload=\"submit_form();\">\n<form name=\"myform\" action=\"";
-        htmlString += targetURL + "\" method=POST\"";
+        htmlString += targetURL + "\" method=\"POST\">";
         htmlString += "<input> type=\"hidden\" name=\"SAMLResponse\" value=\"";
-        htmlString += new String(cipherSAML) + "\">";
-        htmlString += "</form>";
-        htmlString += "<script language=\"javascript\">";
-		htmlString += "function submit_form() {";
-		htmlString += "document.myform.submit()";
-		htmlString += "}";
-	    htmlString += "</script>";
-        htmlString += "</body>";
-        htmlString += "</html>";
+        htmlString += new String(cipherSAML) + "\">\n";
+        htmlString += "</form>\n";
+        htmlString += "<script language=\"javascript\">\n";
+		htmlString += "function submit_form() {\n";
+		htmlString += "document.myform.submit()\n";
+		htmlString += "}\n";
+	    htmlString += "</script>\n";
+        htmlString += "</body>\n";
+        htmlString += "</html>\n";
         
         System.out.println(htmlString);
     }
