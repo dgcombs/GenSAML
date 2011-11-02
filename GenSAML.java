@@ -92,7 +92,8 @@ public class GenSAML {
         
         // Encrypt the SAML
         String encryptedSAML=null;
-        Key secretKey = new SecretKeySpec(new Base64().decode(encryptionKey),"DESede");
+        byte[] keyBytes = new Base64().decode(encryptionKey);
+        Key secretKey = new SecretKeySpec(keyBytes,"DESede");
         IvParameterSpec iv = new IvParameterSpec(new byte[8]);
         Cipher cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv);
