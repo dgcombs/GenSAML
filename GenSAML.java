@@ -84,7 +84,7 @@ public class GenSAML {
         FileReader samlf = new FileReader(samlFileName);
         BufferedReader cr = new BufferedReader(samlf);
         String plainSAML;
-        while ((plainSAML = br.readLine()) != null) {
+        while ((plainSAML = cr.readLine()) != null) {
             System.out.print(".");
             System.out.println();
         }
