@@ -35,7 +35,7 @@ public class GenSAML {
         options.addOption("h", false, "Display Howdy, Dan!");
         CommandLineParser parser = new PosixParser();
         CommandLine cmd = parser.parse( options, args);
-        if(cmd.hasOption("t")) {
+        if(cmd.hasOption("h")) {
         // Tell Dan Howdy
             System.out.println("Howdy, Dan!");
         }
