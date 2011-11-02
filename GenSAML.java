@@ -87,10 +87,12 @@ public class GenSAML {
         // Open SAML file and read into String variable
         FileReader samlf = new FileReader(samlFileName);
         BufferedReader cr = new BufferedReader(samlf);
-        String plainSAML;
-        while ((plainSAML = cr.readLine()) != null) {
+        String plainSAML="";
+        while ((nextLine = cr.readLine()) != null) {
             System.out.print(".");
+            plainSAML += nextLine;
         }
+        System.out.println();
         samlf.close();
         
         // Encrypt the SAML
