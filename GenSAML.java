@@ -81,6 +81,7 @@ public class GenSAML {
         encryptionKey = encryptionKey.replaceAll("(\\r|\\n)", "");
         keyf.close();
         
+        
         // Open SAML file and read into String variable
         FileReader samlf = new FileReader(samlFileName);
         BufferedReader cr = new BufferedReader(samlf);
