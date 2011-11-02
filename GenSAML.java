@@ -8,7 +8,7 @@
 */
 
 // Command Line Parser
-import org.apache.commons.cli;
+import org.apache.commons.cli.*;
 
 // File IO
 import java.io.File;
