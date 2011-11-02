@@ -16,6 +16,7 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
+import java.io.BufferedReader;
 
 // Encryption & Decryption
 import java.security.Key;
