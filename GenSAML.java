@@ -93,7 +93,7 @@ public class GenSAML {
         // Encrypt the SAML
         String encryptedSAML=null;
         Key secretKey = new SecretKeySpec(new Base64().decode(encryptionKey),"DESede");
-        ivParameterSpec iv = new IvParameterSpec(new byte[8]);
+        IvParameterSpec iv = new IvParameterSpec(new byte[8]);
         Cipher cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv);
         byte[] cipherSAML = cipher.doFinal(plainSAML.getBytes("utf-8"));
@@ -106,7 +106,7 @@ public class GenSAML {
         htmlString += "<title>SAML Test Assertion</title>";
         htmlString += "</head>";
         htmlString += "<body onload=\"submit_form();\">\n<form name=\"myform\" action=\"";
-        htmlString += url + "\" method=POST\"";
+        htmlString += targetURL + "\" method=POST\"";
         htmlString += "<input> type=\"hidden\" name=\"SAMLResponse\" value=\"";
         htmlString += encryptedSAML + "\">";
         htmlString += "</form>";
