@@ -76,8 +76,8 @@ public class GenSAML {
         String encryptionKey = "";
         String nextLine;
         while((nextLine = br.readLine()) != null) { 
-            System.out.print(".");
-            System.out.println("Secret Key:: " + nextLine);
+            //System.out.print(".");
+            //System.out.println("Secret Key:: " + nextLine);
             encryptionKey += nextLine;
         }
         // encryptionKey = encryptionKey.trim();
@@ -89,10 +89,10 @@ public class GenSAML {
         BufferedReader cr = new BufferedReader(samlf);
         String plainSAML="";
         while ((nextLine = cr.readLine()) != null) {
-            System.out.print(".");
+            //System.out.print(".");
             plainSAML += nextLine;
         }
-        System.out.println();
+        //System.out.println();
         samlf.close();
         
         // Encrypt the SAML
