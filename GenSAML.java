@@ -33,7 +33,7 @@ public class GenSAML {
 
         // add h option
         options.addOption("h", false, "You want usage? Don't be ridiculous!");
-        options.addOptions("u",true,"Target URL");
+        options.addOption("u",true,"Target URL");
         
         CommandLineParser parser = new PosixParser();
         CommandLine cmd = parser.parse( options, args);
