@@ -113,8 +113,8 @@ public class GenSAML {
         htmlString += "<title>SAML Test Assertion</title>\n";
         htmlString += "</head>\n";
         htmlString += "<body onload=\"submit_form();\">\n<form name=\"myform\" action=\"";
-        htmlString += targetURL + "\" method=\"POST\">";
-        htmlString += "<input> type=\"hidden\" name=\"SAMLResponse\" value=\"";
+        htmlString += targetURL + "\" method=\"POST\">\n";
+        htmlString += "<input type=\"hidden\" name=\"SAMLResponse\" value=\"";
         htmlString += new String(cipherSAML) + "\">\n";
         htmlString += "</form>\n";
         htmlString += "<script language=\"javascript\">\n";
