@@ -62,11 +62,11 @@ public class GenSAML {
             System.out.println("SAML File Required");
             System.exit(1);
         }
-        String tcidValue = cmd.getOptionValue("t");
-        if (tcidValue == null) {
-            System.out.println("TCID Value Required");
-            System.exit(1);
-        }
+        //String tcidValue = cmd.getOptionValue("t");
+        //if (tcidValue == null) {
+            //System.out.println("TCID Value Required");
+            //System.exit(1);
+        //}
         
         // Open Key file and read in key
         FileReader keyf = new FileReader(encryptionKeyFileName); 
