@@ -78,7 +78,7 @@ public class GenSAML {
         while((nextLine = br.readLine()) != null) { 
             System.out.print(".");
             System.out.println("Secret Key:: " + nextLine);
-            encryptionKey.append(nextLine);
+            encryptionKey += nextLine;
         }
         // encryptionKey = encryptionKey.trim();
         //encryptionKey = "JpKJLO2qaMkgEs4VFYEX+eYnn0J6LXXI";
