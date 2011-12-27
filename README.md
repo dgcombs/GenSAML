@@ -6,4 +6,4 @@ It's cheap.
 It's sleezy.
 But it gets the job done.
 
-It's _just_ like its author!
+It's _just_ like its *author*!
